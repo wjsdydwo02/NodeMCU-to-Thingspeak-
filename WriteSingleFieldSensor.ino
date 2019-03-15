@@ -1,7 +1,7 @@
 /*
   WriteSingleField
   
-  Description: Writes a value to a channel on ThingSpeak every 20 seconds.
+  Description: Writes a value to a channel on ThingSpeak every 60 seconds.
   
   Hardware: ESP8266 based boards
   
