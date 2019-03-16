@@ -54,6 +54,7 @@ void setup() {
 }
 
 void loop() {
+  unsigned long timer = millis();
 
   // Connect or reconnect to WiFi
   if(WiFi.status() != WL_CONNECTED){
@@ -79,7 +80,7 @@ void loop() {
     Serial.println("Problem updating channel. HTTP error code " + String(x));
   }
 
-  // change the value
-  
-  delay(60000); // Wait 60 seconds to update the channel again
+  timer = millis() - timer;
+  if(60000>timer)
+    delay(60000-timer); // Wait to update the channel with 60 sec interval
 }
