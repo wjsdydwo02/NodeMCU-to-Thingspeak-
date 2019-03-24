@@ -1,4 +1,4 @@
-# NodeMCU-to-Thingspeak
+# NodeMCU to Thingspeak & AWS EC2 
 
 Modify the global variables and macro parts with your network connection and ThingSpeak channel, server details.
 
