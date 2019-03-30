@@ -3,12 +3,12 @@ var app = express();
 var fs = require('fs');
 var mysql = require('mysql');
 var dateFormat = require('dateformat')
-
+var userinfo = require('./user_info.js')
 var connection  = mysql.createConnection({
 	host: 'localhost',
-	user: 'me',
-	password: 'mypassword',
-	database: 'mydb'
+	user: userinfo.sqluser,
+	password: userinfo.sqlpw,
+	database: userinfo.sqldb
 })
 connection.connect();
 
@@ -66,7 +66,7 @@ app.get('/update', function(req, res) {
   res.end('OK:' + JSON.stringify(req.query));
 });
 
-var server = app.listen(9000, function () {
+var server = app.listen(userinfo.port, function () {
   var host = server.address().address
   var port = server.address().port
   console.log('listening at http://%s:%s',host,port)
