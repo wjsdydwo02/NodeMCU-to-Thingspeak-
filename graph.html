@@ -10,14 +10,14 @@
       data.addRows([
         <%DATA%>
       ]);
-      var formatter = new google.visualization.DateFormat({formatType: 'short', timeZone: -6});
+      var formatter = new google.visualization.DateFormat({formatType: 'short', timeZone: +18});
       
 	var options = {
         chart: {
           title: 'Temperature of my room',
           subtitle: 'measured by ds18b20'
         },
-        width: 1024,
+        width: 768,
         height: 512,
         axes: {
           x: {
@@ -32,6 +32,32 @@
   </script>
 </head>
 <body>
+  <h1>2019 capstone IOT</h1><p>
+  <h3>By YONGJAE JEON,2019.03.31</h3>
+    <h2>Source code</h2><p>
+    <h3>NodeJS sourcecode</h3><p>
+      <ul>
+        <li><a href="https://github.com/wjsdydwo02/NodeMCU-to-Thingspeak-/blob/master/app.js" target="_blank">GitHub Link : app.js</a>
+        <li> Require Node.JS, Express, FileSystem, MySQL, Dateformat and <a href="https://github.com/wjsdydwo02/NodeMCU-to-Thingspeak-/blob/master/user_info.js" target="_blank">user_info.js</a> module
+        <li> User_Info contains MySQL DB info about UserID, PW, DB name
+        <li> MySQL DB Was Created By <a href="https://github.com/wjsdydwo02/NodeMCU-to-Thingspeak-/blob/master/s1_create_table.sql" target="_blank">this</a> .sql file
+      </ul>
+
+    <h3>HTML Sourcecode</h3>
+      <ul>
+        <li><a href="https://github.com/wjsdydwo02/NodeMCU-to-Thingspeak-/blob/master/graph.html" target="_blank">GitHub Link: graph.html</a>
+      </ul>
+    <h3>ARDUINO Sourcecode </h3>
+      <ul>
+        <li><a href="https://github.com/wjsdydwo02/NodeMCU-to-Thingspeak-/blob/master/WiFiClientTSandAWS.ino" target="_blank">GitHub Link: WiFiClientTSandAWS.ino</a>
+        <li> Requires ESP8266WiFi library, DallasTemperature library, OneWire library. Requires Wi-Fi connection
+        <li> personal data is saparated to <a href="https://github.com/wjsdydwo02/NodeMCU-to-Thingspeak-/blob/master/user_info.h" target="_blank">this</a> header file
+      </ul>
+    <h2>Data graph</h2>
+    <h3><%LENGTH%> data were collected from [<%STARTTIME%>] to [<%ENDTIME%>]</h3>
   <div id="line_top_x"></div>
+  <h2><a href="https://thingspeak.com/channels/725615" target="_blank">Thingspeak graph</a></h2>
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/725615/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=120&title=%EB%B0%A9+%EC%98%A8%EB%8F%84&type=line&xaxis=%EC%8B%9C%EA%B0%84&yaxis=%EC%98%A8%EB%8F%84%28%E2%84%83%29&yaxismax=25.5&yaxismin=22"></iframe>
 </body>
 </html>
+
