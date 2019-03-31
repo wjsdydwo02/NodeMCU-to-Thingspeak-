@@ -40,15 +40,23 @@ app.get('/graph', function (req, res) {
 
       var data = "";
       var comma = ""
+      var length = rows.length
       for (var i=0; i< rows.length; i++) {
          r = rows[i];
   	 data += comma + "[new Date("+dateFormat(r.time,"yyyy")+","+(dateFormat(r.time,"m")-1)+","+dateFormat(r.time,"dd,HH,MM,ss")+ "),"+r.value +"]";
 	 /*data += comma + "["+ r.id +","+ r.value +"]";*/
          comma = ",";
       }
+      r = rows[length-1];
+      var times = r.time.getTime() + 32400000;
+      html = html.replace("<%ENDTIME%>",dateFormat(times,"yyyy.mm.dd HH:MM:ss"));
+      r = rows[0]
+      times = r.time.getTime() + 32400000;
+      html = html.replace("<%STARTTIME%>",dateFormat(times,"yyyy.mm.dd HH:MM:ss"));
       var header = "data.addColumn('datetime', 'Date/Time');"
       header += "data.addColumn('number', 'Temp');"
       html = html.replace("<%HEADER%>", header);
+      html = html.replace("<%LENGTH%>", length);
       html = html.replace("<%DATA%>", data);
 
       res.writeHeader(200, {"Content-Type": "text/html"});
@@ -57,6 +65,7 @@ app.get('/graph', function (req, res) {
     });
   });
 })
+
 
 app.get('/update', function(req, res) {
   r = req.query;
